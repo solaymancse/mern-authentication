@@ -3,7 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require("cookie-parser");
 const userRoutes = require('./routes/userRoutes');
-const uploadRoutes = require("./routes/uploadRoute")
+const uploadRoutes = require("./routes/uploadRoute");
+const cors = require("cors");
 const app = express();
 
 //Database connection
@@ -17,7 +18,7 @@ app.use(express.json());
 express.urlencoded({extended: true});
 app.use(cookieParser());
 app.use("/uploads",express.static('uploads'))
-
+app.use(cors({credentials: true, origin:"http://localhost:3000"}));
 // Routes
 app.use("/api/auth",userRoutes);
 app.use(uploadRoutes);
