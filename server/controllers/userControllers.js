@@ -36,7 +36,7 @@ const userController = {
         const activation_token = createToken.activation(newUser);
 
         // send mail
-        const url = `http://loaclhost:3000/api/auth/activate/${activation_token}`;
+        const url = `http://localhost:3000/api/auth/activate/${activation_token}`;
         sendMail.sendEmailRegister(email, url, "Verify Your Email");
         //register success
         res.status(200).json({msg:"Welcome! please check your email."})
